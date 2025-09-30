@@ -14,7 +14,7 @@ export async function GET() {
       ORDER BY date
     `);
 
-    return NextResponse.json({result : timeline, status: 200});
+    return NextResponse.json(timeline);
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
