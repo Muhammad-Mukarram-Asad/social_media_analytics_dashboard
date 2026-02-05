@@ -6,19 +6,36 @@ import PlatformChart from '@/components/PlatformChart';
 import EngagementChart from '@/components/EngagementChart';
 import TopPostsTable from '@/components/TopPostsTable';
 
-export default function Dashboard() {
-
-  interface Stats {
+interface Stats {
   totalUsers: number;
   totalPosts: number;
   totalEngagement: number;
   avgTimeSpent: number;
 }
 
-const [stats, setStats] = useState<Stats>({ totalUsers: 0, totalPosts: 0, totalEngagement: 0, avgTimeSpent: 0 });
-const [platformData, setPlatformData] = useState<any[]>([]);
-const [engagementData, setEngagementData] = useState<any[]>([]);
-const [topPosts, setTopPosts] = useState<any[]>([]);
+interface PlatformData {
+  platform: string;
+  users: number;
+}
+
+interface EngagementData {
+  date: string;
+  engagement: number;
+}
+
+interface TopPost {
+  id: number;
+  title: string;
+  engagement: number;
+  platform: string;
+}
+
+export default function Dashboard() {
+  
+  const [stats, setStats] = useState<Stats>({ totalUsers: 0, totalPosts: 0, totalEngagement: 0, avgTimeSpent: 0 });
+  const [platformData, setPlatformData] = useState<PlatformData[]>([]);
+  const [engagementData, setEngagementData] = useState<EngagementData[]>([]);
+  const [topPosts, setTopPosts] = useState<TopPost[]>([]);
   const [theme, setTheme] = useState('light');
   const [loading, setLoading] = useState(true);
 
